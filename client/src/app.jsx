@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion } from '@fortawesome/free-solid-svg-icons'
 import App from './components/App';
 import reducers from './reducers';
+import generateId from './idGenerator';
 import * as actions from './actions';
 
 export default () => {
@@ -23,6 +24,12 @@ export default () => {
   actions.socket.on('reset', () => store.dispatch(actions.resetGesture()));
   actions.socket.on('opponent', gesture => store.dispatch(actions.opponentsGesture(gesture)));
   actions.socket.on('finish', result => store.dispatch(actions.getResult(result)));
+
+  if (!window.location.hash) {
+    const id = generateId();
+    store.dispatch(actions.setSession(id));
+    actions.socket.emit('session', id);
+  }
 
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 

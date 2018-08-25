@@ -78,7 +78,14 @@ body, form {
 
 .lock {
   font-size: 48px;
-  color: #dcdcdc;
+  color: #cccccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  font-size: 24px;
+  margin-top: 15px;
 }
 
 .game.game-started {

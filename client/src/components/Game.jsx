@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import cn from 'classnames';
 import Buttons from './Buttons';
 import Field from './Field';
+import Intro from './Intro';
 import * as actionCreators from '../actions';
 
-const mapStateToProps = ({ waiting, result }) => ({ waiting, result });
+const mapStateToProps = ({ waiting, result, session }) => ({ waiting, result, session });
 
 class Game extends Component {
   render() {
-    const { waiting, result } = this.props;
+    const { waiting, result, session } = this.props;
 
     const className = cn({
       game: true,
@@ -27,7 +28,7 @@ class Game extends Component {
 
     return (
       <div className={className}>
-        {waiting ? <div className="lock">Waiting for an opponent</div> : game}
+        {waiting ? <Intro session={session} /> : game}
       </div>
     );
   }

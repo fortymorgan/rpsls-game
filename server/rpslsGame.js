@@ -58,7 +58,7 @@ export default class RpslsGame {
   checkGameOver() {
     if (this.turns[0] && this.turns[1]) {
       this.getGameResult();
-      this.players.forEach((p, idx) => p.emit('opponent', this.turns[(idx + 1) % 2]));
+      this.players.forEach((p, idx) => p.emit('opponent', this.turns[idx ^ 1]));
     }
   }
 

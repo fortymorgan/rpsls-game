@@ -57,7 +57,14 @@ const result = handleActions({
   },
 }, 'none');
 
+const session = handleActions({
+  [actions.setSession](state, { payload }) {
+    return payload;
+  },
+}, '');
+
 export default combineReducers({
+  session,
   messages,
   rules,
   player,

@@ -12,18 +12,17 @@ export default () => {
   
   const io = socketio(server);
   
-  let waitingPlayer;
+  const sessions = {};
   
   io.on('connection', (socket) => {
-    socket.emit('player', waitingPlayer ? 'p2' : 'p1');
+    const { session } = socket.handshake.query;
+    socket.emit('player', session ? 'p2' : 'p1');
   
-    if (waitingPlayer) {
-      new RpslsGame(waitingPlayer, socket);
-      waitingPlayer = null;
+    if (session) {
+      new RpslsGame(sessions[session], socket);
     } else {
       socket.emit('message', ({ author: 's', message: 'Waiting for an opponent' }));
-      socket.on('disconnect', () => waitingPlayer = null);
-      waitingPlayer = socket;
+      socket.on('session', session => sessions[session] = socket);
     }
   
     socket.on('message', (message) => {
