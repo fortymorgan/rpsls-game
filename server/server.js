@@ -5,7 +5,7 @@ import RpslsGame from './rpslsGame';
 
 const app = express();
 
-app.use(express.static('dist'));
+app.use(express.static('static'));
 
 const server = http.createServer(app);
 

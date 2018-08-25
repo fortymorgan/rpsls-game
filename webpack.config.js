@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: './client/src',
+  output: {
+    path: `${__dirname}/static`
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
