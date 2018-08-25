@@ -99,6 +99,7 @@ body, form {
   min-width: 82px;
   display: flex;
   justify-content: center;
+  transition: all .2s linear;
 }
 
 .button.selected {

@@ -53,6 +53,7 @@ export default class RpslsGame {
       this.getGameResult();
       this.turns = [null, null];
       this.sendToPlayers('Next Round!');
+      this.players.forEach(p => p.emit('reset'));
     }
   }
 

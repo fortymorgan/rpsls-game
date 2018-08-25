@@ -31,6 +31,9 @@ const gesture = handleActions({
   [actions.chooseGesture](state, { payload }) {
     return state === '' ? payload : state;
   },
+  [actions.resetGesture]() {
+    return '';
+  },
 }, '');
 
 export default combineReducers({

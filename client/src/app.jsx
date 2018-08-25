@@ -20,6 +20,7 @@ export default () => {
   actions.socket.on('message', ({ author, message }) => store.dispatch(actions.addMessage(author, message)));
   actions.socket.on('player', player => store.dispatch(actions.selectPlayer(player)));
   actions.socket.on('start', () => store.dispatch(actions.startGame()));
+  actions.socket.on('reset', () => store.dispatch(actions.resetGesture()));
 
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock);
 

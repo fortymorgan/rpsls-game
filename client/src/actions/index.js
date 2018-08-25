@@ -8,6 +8,7 @@ export const toggleRules = createAction('RULES_TOGGLE');
 export const selectPlayer = createAction('PLAYER_SELECT');
 export const startGame = createAction('GAME_START');
 export const chooseGesture = createAction('GESTURE_CHOOSE');
+export const resetGesture = createAction('GESTURE_RESET');
 
 export const sendMessage = (message, author) => (dispatch) => {
   socket.emit('message', { author, message });
