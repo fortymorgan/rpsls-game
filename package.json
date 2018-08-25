@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "webpack": "webpack",
     "watch": "webpack --watch",
-    "start": "nodemon --exec babel-node server/index.js"
+    "start": "nodemon --exec babel-node server/index.js",
+    "server": "node dist/index.js",
+    "build-server": "babel server --out-dir dist --source-maps inline",
+    "build-app": "npm run webpack -- -p --env production",
+    "build": "npm run build-app && npm run build-server"
   },
   "keywords": [],
   "author": "",
