@@ -82,26 +82,88 @@ body, form {
 }
 
 .game.game-started {
-  padding-bottom: 100px;
-  align-items: flex-end;
+  padding: 10vh 10vw;
+  display: grid;
+  align-items: stretch;
+  grid-template:
+    "buttons" 126px 
+    "field" 1fr / 1fr;
 }
 
-.buttons {
+.field {
+  grid-area: field;
   display: flex;
-  width: 50vw;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
+  /* padding-top: 75px; */
 }
 
-.button {
+.win {
+  background: radial-gradient(ellipse at center,#90ed9099, white);
+}
+
+.lose {
+  background: radial-gradient(ellipse at center,#ffb6c199, white);
+}
+
+.field-header {
+  font-size: 32px;
+  text-align: center;
+}
+
+.field-body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 150px;
+}
+
+.gesture {
   padding: 20px;
   border: 3px solid black;
   border-radius: 15%;
-  min-width: 82px;
+  width: 82px;
   display: flex;
   justify-content: center;
   transition: all .2s linear;
 }
 
+.versus {
+  font-size: 32px;
+}
+
+.field-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.reset {
+  padding: 15px;
+  font-size: 18px;
+  background: #4d7198;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.reset.disabled {
+  opacity: .7;
+  cursor: default;
+}
+
+.buttons {
+  display: flex;
+  grid-area: buttons;
+  justify-content: space-around;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button:hover,
 .button.selected {
   border-color: #4d7198;
 }

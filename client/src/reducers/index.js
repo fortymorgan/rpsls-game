@@ -36,11 +36,34 @@ const gesture = handleActions({
   },
 }, '');
 
+const opponent = handleActions({
+  [actions.opponentsGesture](state, { payload }) {
+    return state === '' ? payload : state;
+  },
+  [actions.resetGesture]() {
+    return '';
+  },
+}, '');
+
+const result = handleActions({
+  [actions.getResult](state, { payload }) {
+    return payload;
+  },
+  [actions.chooseGesture]() {
+    return 'wait';
+  },
+  [actions.resetGesture]() {
+    return 'none';
+  },
+}, 'none');
+
 export default combineReducers({
   messages,
   rules,
   player,
   waiting,
   gesture,
+  opponent,
+  result,
   form: formReducer,
 });

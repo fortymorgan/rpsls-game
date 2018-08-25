@@ -9,6 +9,7 @@ const Button = (props) => {
 
   const className = cn({
     button: true,
+    gesture: true,
     selected,
   });
 

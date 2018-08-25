@@ -25,6 +25,13 @@ export default class RpslsGame {
       player.on('turn', (turn) => {
         this.onTurn(idx, turn);
       });
+      player.on('reset', () => {
+        this.turns[idx] = null
+        if (!this.turns[0] && !this.turns[1]) {
+          this.players.forEach(p => p.emit('reset'));
+          this.sendToPlayers('Next Round!');
+        }
+      });
       player.emit('start');
     });
     this.sendToPlayers('Choose your weapon!')
@@ -51,9 +58,7 @@ export default class RpslsGame {
   checkGameOver() {
     if (this.turns[0] && this.turns[1]) {
       this.getGameResult();
-      this.turns = [null, null];
-      this.sendToPlayers('Next Round!');
-      this.players.forEach(p => p.emit('reset'));
+      this.players.forEach((p, idx) => p.emit('opponent', this.turns[(idx + 1) % 2]));
     }
   }
 
@@ -72,6 +77,8 @@ export default class RpslsGame {
 
   sendWinMessage(winner, loser) {
     winner.emit('message', { author: 's', message: 'You won!' });
+    winner.emit('finish', 'win');
     loser.emit('message', { author: 's', message: 'You lost.' });
+    loser.emit('finish', 'lose');
   }
 }

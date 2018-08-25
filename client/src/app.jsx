@@ -4,7 +4,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock } from '@fortawesome/free-solid-svg-icons'
+import { faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion } from '@fortawesome/free-solid-svg-icons'
 import App from './components/App';
 import reducers from './reducers';
 import * as actions from './actions';
@@ -21,8 +21,10 @@ export default () => {
   actions.socket.on('player', player => store.dispatch(actions.selectPlayer(player)));
   actions.socket.on('start', () => store.dispatch(actions.startGame()));
   actions.socket.on('reset', () => store.dispatch(actions.resetGesture()));
+  actions.socket.on('opponent', gesture => store.dispatch(actions.opponentsGesture(gesture)));
+  actions.socket.on('finish', result => store.dispatch(actions.getResult(result)));
 
-  library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock);
+  library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 
   ReactDOM.render(
     <Provider store={store}>
