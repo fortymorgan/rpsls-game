@@ -25,17 +25,18 @@ export default class RpslsGame {
       player.on('turn', (turn) => {
         this.onTurn(idx, turn);
       });
+      player.emit('start');
     });
     this.sendToPlayers('Choose your weapon!')
   }
 
   sendToPlayer(playerIndex, message) {
-    this.players[playerIndex].emit('message', { author: 'System', message });
+    this.players[playerIndex].emit('message', { author: 's', message });
   }
 
   sendToPlayers(message) {
     this.players.forEach((player) => {
-      player.emit('message',  { author: 'System', message });
+      player.emit('message',  { author: 's', message });
     });
   }
 
@@ -69,7 +70,7 @@ export default class RpslsGame {
   }
 
   sendWinMessage(winner, loser) {
-    winner.emit('message', 'You won!');
-    loser.emit('message', 'You lost.');
+    winner.emit('message', { author: 's', message: 'You won!' });
+    loser.emit('message', { author: 's', message: 'You lost.' });
   }
 }

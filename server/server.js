@@ -17,11 +17,10 @@ io.on('connection', (socket) => {
   socket.emit('player', waitingPlayer ? 'p2' : 'p1');
 
   if (waitingPlayer) {
-    io.emit('start');
     new RpslsGame(waitingPlayer, socket);
     waitingPlayer = null;
   } else {
-    socket.emit('message', ({ author: 'System', message: 'Waiting for an opponent' }));
+    socket.emit('message', ({ author: 's', message: 'Waiting for an opponent' }));
     socket.on('disconnect', () => waitingPlayer = null);
     waitingPlayer = socket;
   }
