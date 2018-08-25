@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
-  entry: './client/src',
+  entry: [`${__dirname}/client/src`],
   output: {
     path: `${__dirname}/static`
   },
