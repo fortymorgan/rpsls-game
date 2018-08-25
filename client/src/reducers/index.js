@@ -27,10 +27,17 @@ const waiting = handleActions({
   },
 }, true);
 
+const gesture = handleActions({
+  [actions.chooseGesture](state, { payload }) {
+    return state === '' ? payload : state;
+  },
+}, '');
+
 export default combineReducers({
   messages,
   rules,
   player,
   waiting,
+  gesture,
   form: formReducer,
 });

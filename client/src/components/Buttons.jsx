@@ -1,0 +1,45 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import cn from 'classnames';
+import * as actionCreators from '../actions';
+
+const Button = (props) => {
+  const { gesture, onTurn, selected } = props;
+
+  const className = cn({
+    button: true,
+    selected,
+  });
+
+  return (
+    <div className={className} id={gesture} onClick={onTurn}>
+      <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
+    </div>
+  );
+};
+
+const mapStateToProps = ({ gesture }) => ({ gesture });
+
+class Buttons extends Component {
+  onTurn = gesture => () => {
+    const { makeTurn } = this.props;
+    makeTurn(gesture);
+  }
+
+  render() {
+    const { gesture } = this.props;
+    
+    return (
+      <div className="buttons">
+        {['rock', 'paper', 'scissors', 'lizard', 'spock']
+          .map(g => <Button key={g} gesture={g} onTurn={this.onTurn(g)} selected={gesture === g} />)}
+      </div>
+    );
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  actionCreators,
+)(Buttons);
