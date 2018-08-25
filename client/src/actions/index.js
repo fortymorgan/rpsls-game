@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { reset } from 'redux-form';
+import io from 'socket.io-client';
 
 export const socket = io();
 
