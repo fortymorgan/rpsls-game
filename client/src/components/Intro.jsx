@@ -9,7 +9,7 @@ const Intro = (props) => {
         className="link"
         onFocus={() => document.querySelector('.link').select()}
         type="text"
-        value={`${window.location.href}#${session}`}
+        value={`${window.location.origin}#${session}`}
         readOnly
       />
     </div>

@@ -19,8 +19,9 @@ export default () => {
   io.on('connection', (socket) => {
     const { session } = socket.handshake.query;
   
-    if (session) {
+    if (session && sessions[session]) {
       new RpslsGame(sessions[session], new Player(socket));
+      delete sessions[session];
     } else {
       const player = new Player(socket);
       const newSession = generateId();
