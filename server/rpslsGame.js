@@ -2,6 +2,7 @@ export default class RpslsGame {
   constructor(p1, p2) {
     this.players = [p1, p2];
     this.turns = [null, null];
+    this.finished = false;
 
     this.win = {
       rock: ['scissors', 'lizard'],
@@ -54,12 +55,13 @@ export default class RpslsGame {
   }
 
   resetGame() {
+    this.finished = false;
     this.players.forEach(p => p.resetGame());
     this.sendToPlayers('Next Round!');
   }
 
   onTurn(pIdx, turn) {
-    if (!this.turns[pIdx]) {
+    if (!this.turns[pIdx] && !this.finished) {
       this.turns[pIdx] = turn;
       this.sendTurn(pIdx, turn);
       this.checkGameOver();
@@ -83,6 +85,7 @@ export default class RpslsGame {
   }
 
   getGameResult() {
+    this.finished = true;
     const p1 = this.turns[0];
     const p2 = this.turns[1];
 
