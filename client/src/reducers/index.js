@@ -16,7 +16,7 @@ const rules = handleActions({
 }, false);
 
 const player = handleActions({
-  [actions.selectPlayer](state, { payload }) {
+  [actions.startGame](state, { payload }) {
     return payload;
   },
 }, '');

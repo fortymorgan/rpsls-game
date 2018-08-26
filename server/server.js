@@ -2,6 +2,8 @@ import http from 'http';
 import express from 'express';
 import socketio from 'socket.io';
 import RpslsGame from './rpslsGame';
+import Player from './player';
+import generateId from './idGenerator';
 
 export default () => {
   const app = express();
@@ -16,18 +18,16 @@ export default () => {
   
   io.on('connection', (socket) => {
     const { session } = socket.handshake.query;
-    socket.emit('player', session ? 'p2' : 'p1');
   
     if (session) {
-      new RpslsGame(sessions[session], socket);
+      new RpslsGame(sessions[session], new Player(socket));
     } else {
-      socket.emit('message', ({ author: 's', message: 'Waiting for an opponent' }));
-      socket.on('session', session => sessions[session] = socket);
+      const player = new Player(socket);
+      const newSession = generateId();
+      player.sendSystemMessage('Waiting for an opponent');
+      player.sendSessionId(newSession);
+      sessions[newSession] = player;
     }
-  
-    socket.on('message', (message) => {
-      io.emit('message', message);
-    });
   });
   
   server.on('error', (err) => {

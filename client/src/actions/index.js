@@ -6,7 +6,6 @@ export const socket = io(`${window.location.origin}?session=${window.location.ha
 
 export const addMessage = createAction('MESSAGE_ADD', (author, message) => ({ author, message }));
 export const toggleRules = createAction('RULES_TOGGLE');
-export const selectPlayer = createAction('PLAYER_SELECT');
 export const startGame = createAction('GAME_START');
 export const chooseGesture = createAction('GESTURE_CHOOSE');
 export const resetGesture = createAction('GESTURE_RESET');
@@ -19,9 +18,8 @@ export const sendMessage = (message, author) => (dispatch) => {
   dispatch(reset('newMessage'));
 };
 
-export const makeTurn = gesture => (dispatch) => {
+export const makeTurn = gesture => () => {
   socket.emit('turn', gesture);
-  dispatch(chooseGesture(gesture));
 };
 
 export const nextRound = () => () => {
