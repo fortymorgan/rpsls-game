@@ -23,6 +23,21 @@ export default class RpslsGame {
       }
     ];
 
+    this.gameOverMap = [
+      {
+        check: (p1, p2) => p1 === p2,
+        result: () => this.sendDrawMessage(),
+      },
+      {
+        check: (p1, p2) => this.win[p1].includes(p2),
+        result: () => this.sendWinMessage(this.players[0], this.players[1]),
+      },
+      {
+        check: (p1, p2) => !this.win[p1].includes(p2),
+        result: () => this.sendWinMessage(this.players[1], this.players[0]),
+      }
+    ];
+
     this.players.forEach((p, idx) => {
       p.subscribeTo('turn', (turn) => {
         this.onTurn(idx, turn);
@@ -89,13 +104,7 @@ export default class RpslsGame {
     const p1 = this.turns[0];
     const p2 = this.turns[1];
 
-    if (p1 === p2) {
-      this.sendDrawMessage();
-    } else if (this.win[p1].includes(p2)) {
-      this.sendWinMessage(this.players[0], this.players[1]);
-    } else {
-      this.sendWinMessage(this.players[1], this.players[0]);
-    }
+    this.gameOverMap.find(c => c.check(p1, p2)).result();
   }
 
   sendDrawMessage() {
