@@ -102,7 +102,6 @@ body, form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* padding-top: 75px; */
 }
 
 .win {
@@ -157,6 +156,7 @@ body, form {
   cursor: pointer;
   border: none;
   outline: none;
+  width: 222px;
 }
 
 .reset.disabled {

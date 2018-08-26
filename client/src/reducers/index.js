@@ -63,6 +63,15 @@ const session = handleActions({
   },
 }, '');
 
+const reset = handleActions({
+  [actions.requestReset]() {
+    return true;
+  },
+  [actions.resetGesture]() {
+    return false;
+  },
+}, false)
+
 export default combineReducers({
   session,
   messages,
@@ -72,5 +81,6 @@ export default combineReducers({
   gesture,
   opponent,
   result,
+  reset,
   form: formReducer,
 });

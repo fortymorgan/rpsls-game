@@ -14,13 +14,13 @@ const Gesture = props => {
   );
 }
 
-const mapStateToProps = ({ gesture, opponent, result }) => ({ gesture, opponent, result });
+const mapStateToProps = ({ gesture, opponent, result, reset }) => ({ gesture, opponent, result, reset });
 
 class Field extends Component {
   render() {
-    const { gesture, opponent, nextRound, result } = this.props;
+    const { gesture, opponent, nextRound, result, reset } = this.props;
 
-    const disabled = !opponent || !gesture;
+    const disabled = !opponent || !gesture || reset;
 
     const nextRClass = cn({
       reset: true,
@@ -44,7 +44,9 @@ class Field extends Component {
           <Gesture gesture={opponent} />
         </div>
         <div className="field-footer">
-          <button className={nextRClass} disabled={disabled} onClick={nextRound}>Next round</button>
+          <button className={nextRClass} disabled={disabled} onClick={nextRound}>
+            {reset ? 'Waiting for an opponent' : 'Next round'}
+          </button>
         </div>
       </div>
     );
