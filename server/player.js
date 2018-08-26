@@ -35,6 +35,10 @@ export default class Player {
     this.socket.emit('turn', turn);
   }
 
+  onOpponentLeft() {
+    this.socket.emit('left');
+  }
+
   subscribeTo(event, callback) {
     this.socket.on(event, callback);
   }

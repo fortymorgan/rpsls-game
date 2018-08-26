@@ -70,7 +70,16 @@ const reset = handleActions({
   [actions.resetGesture]() {
     return false;
   },
-}, false)
+}, false);
+
+const online = handleActions({
+  [actions.setOpponentOffline]() {
+    return false;
+  },
+  [actions.startGame]() {
+    return true;
+  },
+}, false);
 
 export default combineReducers({
   session,
@@ -80,6 +89,7 @@ export default combineReducers({
   waiting,
   gesture,
   opponent,
+  online,
   result,
   reset,
   form: formReducer,

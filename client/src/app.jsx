@@ -24,6 +24,7 @@ export default () => {
   actions.socket.on('finish', result => store.dispatch(actions.getResult(result)));
   actions.socket.on('session', id => store.dispatch(actions.setSession(id)));
   actions.socket.on('turn', turn => store.dispatch(actions.chooseGesture(turn)));
+  actions.socket.on('left', () => store.dispatch(actions.setOpponentOffline()))
 
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 

@@ -39,17 +39,14 @@ export default class RpslsGame {
     ];
 
     this.players.forEach((p, idx) => {
-      p.subscribeTo('turn', (turn) => {
-        this.onTurn(idx, turn);
-      });
+      p.subscribeTo('disconnect', () => this.players[idx ^ 1].onOpponentLeft());
+      p.subscribeTo('turn', turn => this.onTurn(idx, turn));
+      p.subscribeTo('message', (msg) => this.sendChatMessage(msg));
       p.subscribeTo('reset', () => {
         this.turns[idx] = null
         if (!this.turns[0] && !this.turns[1]) {
           this.resetGame();
         }
-      });
-      p.subscribeTo('message', (msg) => {
-        this.sendChatMessage(msg);
       });
       p.startGame(`p${idx + 1}`);
     });

@@ -164,6 +164,27 @@ body, form {
   cursor: default;
 }
 
+.info {
+  position: absolute;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  color: white;
+  width: 180px;
+  text-align: center;
+  left: 25px;
+  bottom: 25px;
+  transition: all .5s linear;
+}
+
+.offline {
+  background: #ff7341;
+}
+
+.online {
+  background: #88c52c;
+}
+
 .buttons {
   display: flex;
   grid-area: buttons;
