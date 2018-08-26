@@ -110,11 +110,11 @@ body, form {
 }
 
 .lose {
-  background: radial-gradient(ellipse at center,#ffb6c199, white);
+  background: radial-gradient(ellipse at center, #f0808099, white);
 }
 
 .draw {
-  background: radial-gradient(ellipse at center,#f7ff8599, white);
+  background: radial-gradient(ellipse at center,#f3ff4f99, white);
 }
 
 .field-header {
