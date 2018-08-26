@@ -67,7 +67,8 @@ export default class RpslsGame {
     const p2 = this.turns[1];
 
     if (p1 === p2) {
-      this.sendToPlayers('Draw!');
+      this.sendToPlayers('Draw.');
+      this.players.forEach(p => p.emit('finish', 'draw'));
     } else if (this.map[p1].win.includes(p2)) {
       this.sendWinMessage(this.players[0], this.players[1]);
     } else {

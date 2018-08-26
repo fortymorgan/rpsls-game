@@ -27,17 +27,12 @@ class Field extends Component {
       disabled,
     });
 
-    const fieldClass = cn({
-      field: true,
-      win: result === 'win',
-      lose: result === 'lose',
-    });
-
     const headerMap = {
       none: 'Choose your weapon!',
       wait: 'Waiting for an opponent.',
       win: 'You won!',
       lose: 'You lost.',
+      draw: 'Draw.',
     };
 
     return (

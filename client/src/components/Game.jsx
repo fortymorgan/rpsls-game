@@ -17,6 +17,7 @@ class Game extends Component {
       'game-started': !waiting,
       win: result === 'win',
       lose: result === 'lose',
+      draw: result === 'draw',
     });
 
     const game = (
