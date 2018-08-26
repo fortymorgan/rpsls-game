@@ -19,7 +19,18 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
-      }
+      },
+      {
+        test: /\.wav$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

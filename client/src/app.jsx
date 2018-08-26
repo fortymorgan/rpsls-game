@@ -8,6 +8,7 @@ import { faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQ
 import App from './components/App';
 import reducers from './reducers';
 import * as actions from './actions';
+import addSounds from './addSounds';
 
 export default () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -18,13 +19,17 @@ export default () => {
   );
 
   actions.socket.on('message', ({ author, message }) => store.dispatch(actions.addMessage(author, message)));
-  actions.socket.on('start', player => store.dispatch(actions.startGame(player)));
-  actions.socket.on('reset', () => store.dispatch(actions.resetGesture()));
+  actions.socket.on('start', player => store.dispatch(actions.gameStart(player)));
+  actions.socket.on('reset', () => store.dispatch(actions.gameReset()));
   actions.socket.on('opponent', gesture => store.dispatch(actions.opponentsGesture(gesture)));
-  actions.socket.on('finish', result => store.dispatch(actions.getResult(result)));
+  actions.socket.on('finish', result => store.dispatch(actions.setResult(result)));
   actions.socket.on('session', id => store.dispatch(actions.setSession(id)));
-  actions.socket.on('turn', turn => store.dispatch(actions.chooseGesture(turn)));
-  actions.socket.on('left', () => store.dispatch(actions.setOpponentOffline()))
+  actions.socket.on('turn', turn => store.dispatch(actions.makeChoose(turn)));
+  actions.socket.on('left', () => store.dispatch(actions.setOpponentOffline()));
+
+  soundManager.setup({ debugMode: false });
+  soundManager.onready(addSounds);
+
 
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 

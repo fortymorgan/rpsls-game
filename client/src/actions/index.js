@@ -28,3 +28,23 @@ export const nextRound = () => (dispatch) => {
   socket.emit('reset');
   dispatch(requestReset());
 };
+
+export const makeChoose = gesture => (dispatch) => {
+  dispatch(chooseGesture(gesture));
+  soundManager.play('choose');
+};
+
+export const setResult = result => (dispatch) => {
+  dispatch(getResult(result));
+  setTimeout(() => soundManager.play(result), 500);
+};
+
+export const gameStart = player => (dispatch) => {
+  dispatch(startGame(player));
+  soundManager.play('start');
+};
+
+export const gameReset = () => (dispatch) => {
+  dispatch(resetGesture());
+  soundManager.play('start');
+};
