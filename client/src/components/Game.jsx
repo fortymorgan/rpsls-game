@@ -6,17 +6,21 @@ import Field from './Field';
 import Intro from './Intro';
 import * as actionCreators from '../actions';
 
-const mapStateToProps = ({
-  waiting,
-  result,
-  session,
-  online,
-}) => ({
-  waiting,
-  result,
-  session,
-  online,
-});
+const mapStateToProps = (state) => {
+  const {
+    waiting,
+    result,
+    session,
+    online,
+  } = state;
+
+  return {
+    waiting,
+    result,
+    session,
+    online,
+  };
+};
 
 class Game extends Component {
   render() {

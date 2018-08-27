@@ -14,17 +14,21 @@ const Gesture = (props) => {
   );
 };
 
-const mapStateToProps = ({
-  gesture,
-  result,
-  opponent,
-  reset,
-}) => ({
-  gesture,
-  result,
-  opponent,
-  reset,
-});
+const mapStateToProps = (state) => {
+  const {
+    gesture,
+    result,
+    opponent,
+    reset,
+  } = state;
+
+  return {
+    gesture,
+    result,
+    opponent,
+    reset,
+  };
+};
 
 class Field extends Component {
   render() {
