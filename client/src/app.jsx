@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { soundManager } from 'soundmanager2';
 import App from './components/App';
 import reducers from './reducers';
 import * as actions from './actions';
@@ -29,7 +30,6 @@ export default () => {
 
   soundManager.setup({ debugMode: false });
   soundManager.onready(addSounds);
-
 
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 

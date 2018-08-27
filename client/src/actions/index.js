@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { reset } from 'redux-form';
 import io from 'socket.io-client';
+import { soundManager } from 'soundmanager2';
 
 export const socket = io(`${window.location.origin}?session=${window.location.hash.slice(1)}`);
 

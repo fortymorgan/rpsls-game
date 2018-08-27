@@ -1,30 +1,31 @@
-import '../../sounds/win.wav';
-import '../../sounds/lose.wav';
-import '../../sounds/draw.wav';
-import '../../sounds/start.wav';
-import '../../sounds/choose.wav';
+import { soundManager } from 'soundmanager2';
+import win from '../../sounds/win.wav';
+import lose from '../../sounds/lose.wav';
+import draw from '../../sounds/draw.wav';
+import start from '../../sounds/start.wav';
+import choose from '../../sounds/choose.wav';
 
 export default () => {
   const sounds = [
     {
       id: 'choose',
-      url: 'sounds/choose.wav',
+      url: choose,
     },
     {
       id: 'win',
-      url: 'sounds/win.wav',
+      url: win,
     },
     {
       id: 'lose',
-      url: 'sounds/lose.wav',
+      url: lose,
     },
     {
       id: 'draw',
-      url: 'sounds/draw.wav',
+      url: draw,
     },
     {
       id: 'start',
-      url: 'sounds/start.wav',
+      url: start,
     }
   ];
 
