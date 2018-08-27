@@ -15,7 +15,7 @@ class Rules extends Component {
     const { rules } = this.props;
     const rulesStyle = {
       top: rules ? '8%' : '-500px',
-    }
+    };
 
     return (
       <Fragment>
@@ -26,7 +26,7 @@ class Rules extends Component {
       </Fragment>
     );
   }
-};
+}
 
 export default connect(
   mapStateToProps,

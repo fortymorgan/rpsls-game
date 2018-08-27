@@ -3,8 +3,15 @@ import ReactDOM from 'react-dom';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faHandLizard,
+  faHandPaper,
+  faHandRock,
+  faHandScissors,
+  faHandSpock,
+  faQuestion,
+} from '@fortawesome/free-solid-svg-icons';
 import { soundManager } from 'soundmanager2';
 import App from './components/App';
 import reducers from './reducers';
@@ -12,6 +19,7 @@ import * as actions from './actions';
 import addSounds from './addSounds';
 
 export default () => {
+  // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(

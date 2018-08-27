@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cn from 'classnames';
 import * as actionCreators from '../actions';
 
-const Gesture = props => {
+const Gesture = (props) => {
   const { gesture } = props;
 
   return (
@@ -12,13 +12,29 @@ const Gesture = props => {
       <FontAwesomeIcon icon={gesture === '' ? 'question' : `hand-${gesture}`} size="5x" />
     </div>
   );
-}
+};
 
-const mapStateToProps = ({ gesture, opponent, result, reset }) => ({ gesture, opponent, result, reset });
+const mapStateToProps = ({
+  gesture,
+  result,
+  opponent,
+  reset,
+}) => ({
+  gesture,
+  result,
+  opponent,
+  reset,
+});
 
 class Field extends Component {
   render() {
-    const { gesture, opponent, nextRound, result, reset } = this.props;
+    const {
+      gesture,
+      opponent,
+      nextRound,
+      result,
+      reset,
+    } = this.props;
 
     const disabled = !opponent || !gesture || reset;
 

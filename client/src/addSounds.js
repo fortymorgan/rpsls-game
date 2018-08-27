@@ -26,7 +26,7 @@ export default () => {
     {
       id: 'start',
       url: start,
-    }
+    },
   ];
 
   sounds.forEach(s => soundManager.createSound(s));

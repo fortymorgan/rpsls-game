@@ -4,7 +4,7 @@ import NewMessageForm from './NewMessage';
 import Message from './Message';
 import * as actionCreators from '../actions';
 
-const mapStateToProps = ({ messages, player }) => ({ messages, player })
+const mapStateToProps = ({ messages, player }) => ({ messages, player });
 
 class Chat extends Component {
   render() {

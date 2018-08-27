@@ -6,11 +6,26 @@ import Field from './Field';
 import Intro from './Intro';
 import * as actionCreators from '../actions';
 
-const mapStateToProps = ({ waiting, result, session, online }) => ({ waiting, result, session, online });
+const mapStateToProps = ({
+  waiting,
+  result,
+  session,
+  online,
+}) => ({
+  waiting,
+  result,
+  session,
+  online,
+});
 
 class Game extends Component {
   render() {
-    const { waiting, result, session, online } = this.props;
+    const {
+      waiting,
+      result,
+      session,
+      online,
+    } = this.props;
 
     const className = cn({
       game: true,
@@ -31,7 +46,7 @@ class Game extends Component {
         <Field />
         <Buttons />
       </Fragment>
-    )
+    );
 
     return (
       <div className={className}>

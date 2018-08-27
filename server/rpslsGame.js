@@ -14,7 +14,7 @@ const finishMap = [
   {
     message: 'You lost.',
     result: 'lose',
-  }
+  },
 ];
 
 export default class RpslsGame {
@@ -25,35 +25,35 @@ export default class RpslsGame {
 
     this.gameOverMap = [
       {
-        check: (p1, p2) => p1 === p2,
+        check: (player1, player2) => player1 === player2,
         result: () => this.sendDrawMessage(),
       },
       {
-        check: (p1, p2) => winMap[p1].includes(p2),
-        result: () => this.sendWinMessage(this.players[0], this.players[1]),
+        check: (player1, player2) => winMap[player1].includes(player2),
+        result: () => this.sendWinMessage(0, 1),
       },
       {
-        check: (p1, p2) => !winMap[p1].includes(p2),
-        result: () => this.sendWinMessage(this.players[1], this.players[0]),
-      }
+        check: (player1, player2) => !winMap[player1].includes(player2),
+        result: () => this.sendWinMessage(1, 0),
+      },
     ];
   }
-  
+
   run() {
     this.players.forEach((p, idx) => {
       p.subscribeTo('disconnect', () => this.players[idx ^ 1].onOpponentLeft());
       p.subscribeTo('turn', turn => this.onTurn(idx, turn));
-      p.subscribeTo('message', (msg) => this.sendChatMessage(msg));
+      p.subscribeTo('message', msg => this.sendChatMessage(msg));
       p.subscribeTo('reset', () => {
-        this.turns[idx] = null
+        this.turns[idx] = null;
         if (!this.turns[0] && !this.turns[1]) {
           this.resetGame();
         }
       });
       p.startGame(`p${idx + 1}`);
     });
-  
-    this.sendToPlayers('Choose your weapon!')
+
+    this.sendToPlayers('Choose your weapon!');
   }
 
   sendToPlayer(pIdx, msg) {
@@ -113,8 +113,8 @@ export default class RpslsGame {
 
   sendWinMessage(...players) {
     players.forEach((p, idx) => {
-      p.sendSystemMessage(finishMap[idx].message);
-      p.finishGame(finishMap[idx].result);
+      this.players[p].sendSystemMessage(finishMap[idx].message);
+      this.players[p].finishGame(finishMap[idx].result);
     });
   }
 }

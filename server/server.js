@@ -7,18 +7,18 @@ import generateId from './idGenerator';
 
 export default () => {
   const app = express();
-  
+
   app.use(express.static('static'));
-  
+
   const server = http.createServer(app);
-  
+
   const io = socketio(server);
-  
+
   const sessions = {};
-  
+
   io.on('connection', (socket) => {
     const { session } = socket.handshake.query;
-  
+
     if (session && sessions[session]) {
       const game = new RpslsGame(sessions[session], new Player(socket));
       game.run();
@@ -31,10 +31,6 @@ export default () => {
       sessions[newSession] = player;
     }
   });
-  
-  server.on('error', (err) => {
-    console.error('Server error:', err);
-  });
-  
+
   return server;
 };
