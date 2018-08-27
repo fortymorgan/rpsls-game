@@ -20,17 +20,19 @@ const Button = (props) => {
   );
 };
 
-const mapStateToProps = ({ gesture }) => ({ gesture });
+const mapStateToProps = ({ gesture, status: { finished } }) => ({ gesture, finished });
 
 class Buttons extends Component {
   onTurn = gesture => () => {
-    const { makeTurn } = this.props;
-    makeTurn(gesture);
+    const { makeTurn, finished } = this.props;
+    if (!finished) {
+      makeTurn(gesture);
+    }
   }
 
   render() {
     const { gesture } = this.props;
-    
+
     return (
       <div className="buttons">
         {['rock', 'paper', 'scissors', 'lizard', 'spock']

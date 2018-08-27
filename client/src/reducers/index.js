@@ -22,8 +22,11 @@ const status = handleActions({
   [actions.requestReset](state) {
     return { ...state, reset: true };
   },
+  [actions.chooseGesture](state) {
+    return { ...state, finished: true };
+  },
   [actions.resetGesture](state) {
-    return { ...state, reset: false };
+    return { ...state, reset: false, finished: false };
   },
   [actions.setOpponentOffline](state) {
     return { ...state, online: false };
@@ -32,6 +35,7 @@ const status = handleActions({
   waiting: true,
   online: false,
   reset: false,
+  finished: false,
 });
 
 const gesture = handleActions({
