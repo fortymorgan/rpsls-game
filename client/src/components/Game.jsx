@@ -8,10 +8,12 @@ import * as actionCreators from '../actions';
 
 const mapStateToProps = (state) => {
   const {
-    waiting,
+    status: {
+      waiting,
+      online,
+    },
     result,
     session,
-    online,
   } = state;
 
   return {

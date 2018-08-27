@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
     gesture,
     result,
     opponent,
-    reset,
+    status: { reset },
   } = state;
 
   return {

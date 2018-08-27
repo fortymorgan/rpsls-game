@@ -15,11 +15,24 @@ const player = handleActions({
   },
 }, '');
 
-const waiting = handleActions({
-  [actions.startGame]() {
-    return false;
+const status = handleActions({
+  [actions.startGame](state) {
+    return { ...state, waiting: false, online: true };
   },
-}, true);
+  [actions.requestReset](state) {
+    return { ...state, reset: true };
+  },
+  [actions.resetGesture](state) {
+    return { ...state, reset: false };
+  },
+  [actions.setOpponentOffline](state) {
+    return { ...state, online: false };
+  },
+}, {
+  waiting: true,
+  online: false,
+  reset: false,
+});
 
 const gesture = handleActions({
   [actions.chooseGesture](state, { payload }) {
@@ -57,33 +70,13 @@ const session = handleActions({
   },
 }, '');
 
-const reset = handleActions({
-  [actions.requestReset]() {
-    return true;
-  },
-  [actions.resetGesture]() {
-    return false;
-  },
-}, false);
-
-const online = handleActions({
-  [actions.setOpponentOffline]() {
-    return false;
-  },
-  [actions.startGame]() {
-    return true;
-  },
-}, false);
-
 export default combineReducers({
+  status,
   session,
   messages,
   player,
-  waiting,
   gesture,
   opponent,
-  online,
   result,
-  reset,
   form: formReducer,
 });
