@@ -6,7 +6,6 @@ import { soundManager } from 'soundmanager2';
 export const socket = io(`${window.location.origin}?session=${window.location.hash.slice(1)}`);
 
 export const addMessage = createAction('MESSAGE_ADD', (author, message) => ({ author, message }));
-export const toggleRules = createAction('RULES_TOGGLE');
 export const startGame = createAction('GAME_START');
 export const chooseGesture = createAction('GESTURE_CHOOSE');
 export const resetGesture = createAction('GESTURE_RESET');

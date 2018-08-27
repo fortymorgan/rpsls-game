@@ -9,12 +9,6 @@ const messages = handleActions({
   },
 }, []);
 
-const rules = handleActions({
-  [actions.toggleRules](state) {
-    return !state;
-  },
-}, false);
-
 const player = handleActions({
   [actions.startGame](state, { payload }) {
     return payload;
@@ -84,7 +78,6 @@ const online = handleActions({
 export default combineReducers({
   session,
   messages,
-  rules,
   player,
   waiting,
   gesture,

@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import * as actionCreators from '../actions';
 import RulesText from './RulesText';
 
-const mapStateToProps = ({ rules }) => ({ rules });
+export default class Rules extends Component {
+  state = {
+    rules: false,
+  }
 
-class Rules extends Component {
   onRules = () => {
-    const { toggleRules } = this.props;
-    toggleRules();
+    const { rules } = this.state;
+    this.setState({ rules: !rules });
   }
 
   render() {
-    const { rules } = this.props;
+    const { rules } = this.state;
     const rulesStyle = {
       top: rules ? '8%' : '-500px',
     };
@@ -27,8 +27,3 @@ class Rules extends Component {
     );
   }
 }
-
-export default connect(
-  mapStateToProps,
-  actionCreators,
-)(Rules);
