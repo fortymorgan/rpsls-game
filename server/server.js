@@ -20,7 +20,8 @@ export default () => {
     const { session } = socket.handshake.query;
   
     if (session && sessions[session]) {
-      new RpslsGame(sessions[session], new Player(socket));
+      const game = new RpslsGame(sessions[session], new Player(socket));
+      game.run();
       delete sessions[session];
     } else {
       const player = new Player(socket);
