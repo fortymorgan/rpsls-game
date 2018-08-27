@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import cn from 'classnames';
 import * as actionCreators from '../actions';
 
@@ -8,9 +9,17 @@ const Gesture = (props) => {
   const { gesture } = props;
 
   return (
-    <div className="gesture">
-      <FontAwesomeIcon icon={gesture === '' ? 'question' : `hand-${gesture}`} size="5x" />
-    </div>
+    <ReactCSSTransitionGroup
+      transitionName={'choose'}
+      transitionAppear={true}
+      transitionEnter={false}
+      transitionLeave={false}
+      transitionAppearTimeout={500}
+    >
+      <div className="gesture">
+        <FontAwesomeIcon icon={gesture === '' ? 'question' : `hand-${gesture}`} size="5x" />
+      </div>
+    </ReactCSSTransitionGroup>
   );
 };
 

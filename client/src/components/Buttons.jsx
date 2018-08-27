@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cn from 'classnames';
 import * as actionCreators from '../actions';
@@ -14,9 +15,17 @@ const Button = (props) => {
   });
 
   return (
-    <div className={className} id={gesture} onClick={onTurn}>
-      <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
-    </div>
+    <ReactCSSTransitionGroup
+      transitionName={`gesture-${gesture}`}
+      transitionAppear={true}
+      transitionEnter={false}
+      transitionLeave={false}
+      transitionAppearTimeout={500}
+    >
+      <div className={className} id={gesture} onClick={onTurn}>
+        <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
+      </div>
+    </ReactCSSTransitionGroup>
   );
 };
 
@@ -34,10 +43,20 @@ class Buttons extends Component {
     const { gesture } = this.props;
 
     return (
+      // <ReactCSSTransitionGroup
+      //   transitionName="gestures"
+      //   transitionAppear={true}
+      // >
       <div className="buttons">
         {['rock', 'paper', 'scissors', 'lizard', 'spock']
-          .map(g => <Button key={g} gesture={g} onTurn={this.onTurn(g)} selected={gesture === g} />)}
+          .map(g => <Button
+            key={g}
+            gesture={g}
+            onTurn={this.onTurn(g)}
+            selected={gesture === g}
+          />)}
       </div>
+      // </ReactCSSTransitionGroup>
     );
   }
 }

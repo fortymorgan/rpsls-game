@@ -199,3 +199,92 @@ body, form {
 .button.selected {
   border-color: #4d7198;
 }
+
+.gesture-rock-appear {
+  transform: translateY(-100px);
+}
+
+.gesture-rock-appear-active {
+  animation: rock-appear .5s ease-in forwards;
+}
+
+@keyframes rock-appear {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  40% {
+    transform: translateY(0px);
+  }
+
+  60% {
+    transform: translateY(-50px);
+  }
+
+  75% {
+    transform: translateY(0px);
+  }
+
+  90% {
+    transform: translateY(-25px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.gesture-paper-appear {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+.gesture-paper-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all .5s linear;
+}
+
+.gesture-scissors-appear {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.gesture-scissors-appear-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all .5s linear;
+}
+
+.gesture-lizard-appear {
+  opacity: 0;
+  transform: scale(1.5);
+}
+
+.gesture-lizard-appear-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all .5s linear;
+}
+
+.gesture-spock-appear {
+  opacity: 0;
+  transform: rotateY(360deg);
+}
+
+.gesture-spock-appear-active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  transition: all .5s linear;
+}
+
+.choose-appear {
+  opacity: 0;
+  transform: rotateX(360deg);
+}
+
+.choose-apper-active {
+  opacity: 1;
+  transform: rotateX(0deg);
+  transition: all .5s linear;
+}
