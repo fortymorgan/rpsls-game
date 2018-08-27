@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Intro = (props) => {
-  const { session } = props;
-  return (
-    <div className="lock">
-      Share this link to start the game
-      <input
-        className="link"
-        onFocus={() => document.querySelector('.link').select()}
-        type="text"
-        value={`${window.location.origin}#${session}`}
-        readOnly
-      />
-    </div>
-  );
-};
+export default class Intro extends Component {
+  onSelect = () => {
+    this.input.select();
+  }
 
-export default Intro;
+  render() {
+    const { session } = this.props;
+    return (
+      <div className="lock">
+        Share this link to start the game
+        <input
+          className="link"
+          onFocus={this.onSelect}
+          type="text"
+          value={`${window.location.origin}#${session}`}
+          readOnly
+          ref={(input) => { this.input = input; }}
+        />
+      </div>
+    );
+  }
+}
