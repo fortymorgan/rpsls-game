@@ -199,6 +199,8 @@ body, form {
 .button:hover,
 .button.selected {
   border-color: #4d7198;
+  transform: scale(1.1);
+  transition: all .1s linear;
 }
 
 .button:hover path,
