@@ -22,7 +22,7 @@ const Button = (props) => {
       transitionAppear={true}
       transitionEnter={false}
       transitionLeave={false}
-      transitionAppearTimeout={1500}
+      transitionAppearTimeout={500}
     >
       <div className={className} id={gesture} onClick={onTurn}>
         {/* choose a gesture icon based on prop */}

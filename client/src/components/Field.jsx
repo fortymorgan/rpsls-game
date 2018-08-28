@@ -23,7 +23,7 @@ const Gesture = (props) => {
       transitionAppear={true}
       transitionEnter={false}
       transitionLeave={false}
-      transitionAppearTimeout={1500}
+      transitionAppearTimeout={500}
     >
       <div className={gestureClass}>
         {/* choose a gesture icon based on prop */}
