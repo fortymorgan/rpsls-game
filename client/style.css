@@ -200,6 +200,11 @@ body, form {
   border-color: #4d7198;
 }
 
+.button:hover path,
+.button.selected path {
+  fill: #4d7198;
+}
+
 .gesture-rock-appear {
   opacity: 0;
   transform: scale(0.5);
