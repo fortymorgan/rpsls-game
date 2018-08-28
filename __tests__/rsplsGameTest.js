@@ -1,6 +1,7 @@
 import RpslsGame from '../server/rpslsGame';
 import MockPlayer from './__mocks__/player';
 
+// these tests are interdependent and should be executed in order
 describe('game instance test', () => {
   const p1 = new MockPlayer();
   const p2 = new MockPlayer();
