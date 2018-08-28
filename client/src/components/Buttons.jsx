@@ -20,7 +20,7 @@ const Button = (props) => {
       transitionAppear={true}
       transitionEnter={false}
       transitionLeave={false}
-      transitionAppearTimeout={500}
+      transitionAppearTimeout={1000}
     >
       <div className={className} id={gesture} onClick={onTurn}>
         <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />

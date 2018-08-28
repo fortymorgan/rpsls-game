@@ -205,7 +205,7 @@ body, form {
 }
 
 .gesture-rock-appear-active {
-  animation: rock-appear .5s ease-in forwards;
+  animation: rock-appear 1s ease-in forwards;
 }
 
 @keyframes rock-appear {
@@ -242,7 +242,7 @@ body, form {
 .gesture-paper-appear-active {
   opacity: 1;
   transform: translateY(0px);
-  transition: all .5s linear;
+  transition: all 1s linear;
 }
 
 .gesture-scissors-appear {
@@ -253,7 +253,7 @@ body, form {
 .gesture-scissors-appear-active {
   opacity: 1;
   transform: translateX(0px);
-  transition: all .5s linear;
+  transition: all 1s linear;
 }
 
 .gesture-lizard-appear {
@@ -264,7 +264,7 @@ body, form {
 .gesture-lizard-appear-active {
   opacity: 1;
   transform: scale(1);
-  transition: all .5s linear;
+  transition: all 1s linear;
 }
 
 .gesture-spock-appear {
@@ -275,7 +275,7 @@ body, form {
 .gesture-spock-appear-active {
   opacity: 1;
   transform: rotateY(0deg);
-  transition: all .5s linear;
+  transition: all 1s linear;
 }
 
 .choose-appear {
@@ -286,5 +286,5 @@ body, form {
 .choose-apper-active {
   opacity: 1;
   transform: rotateX(0deg);
-  transition: all .5s linear;
+  transition: all 1s linear;
 }

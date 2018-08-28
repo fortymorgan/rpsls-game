@@ -14,7 +14,7 @@ const Gesture = (props) => {
       transitionAppear={true}
       transitionEnter={false}
       transitionLeave={false}
-      transitionAppearTimeout={500}
+      transitionAppearTimeout={1000}
     >
       <div className="gesture">
         <FontAwesomeIcon icon={gesture === '' ? 'question' : `hand-${gesture}`} size="5x" />
