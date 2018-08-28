@@ -6,6 +6,7 @@ import start from '../../sounds/start.wav';
 import choose from '../../sounds/choose.wav';
 
 export default () => {
+  // array of sounds used by sound manager
   const sounds = [
     {
       id: 'choose',
@@ -29,5 +30,6 @@ export default () => {
     },
   ];
 
+  // add every sound in array to soundmanager library
   sounds.forEach(s => soundManager.createSound(s));
 };

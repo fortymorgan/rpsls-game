@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
 
 class NewMessage extends Component {
+  // send chat message to server
   onSend = (values) => {
     const { sendMessage, player } = this.props;
     sendMessage(values.newMessage, player);

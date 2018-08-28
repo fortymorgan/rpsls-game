@@ -8,6 +8,7 @@ import * as actionCreators from '../actions';
 const Button = (props) => {
   const { gesture, onTurn, selected } = props;
 
+  // generate class for gestures buttons
   const className = cn({
     button: true,
     gesture: true,
@@ -15,6 +16,7 @@ const Button = (props) => {
   });
 
   return (
+    // add react transition animation on buttons render
     <ReactCSSTransitionGroup
       transitionName={`gesture-${gesture}`}
       transitionAppear={true}
@@ -23,6 +25,7 @@ const Button = (props) => {
       transitionAppearTimeout={1000}
     >
       <div className={className} id={gesture} onClick={onTurn}>
+        {/* choose a gesture icon basing on prop */}
         <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
       </div>
     </ReactCSSTransitionGroup>
@@ -32,6 +35,7 @@ const Button = (props) => {
 const mapStateToProps = ({ gesture, status: { finished } }) => ({ gesture, finished });
 
 class Buttons extends Component {
+  // handler for button on players turn
   onTurn = gesture => () => {
     const { makeTurn, finished } = this.props;
     if (!finished) {
@@ -43,12 +47,8 @@ class Buttons extends Component {
     const { gesture } = this.props;
 
     return (
-      // <ReactCSSTransitionGroup
-      //   transitionName="gestures"
-      //   transitionAppear={true}
-      // >
       <div className="buttons">
-        {['rock', 'paper', 'scissors', 'lizard', 'spock']
+        {['rock', 'paper', 'scissors', 'lizard', 'spock'] // array of gestures
           .map(g => <Button
             key={g}
             gesture={g}
@@ -56,7 +56,6 @@ class Buttons extends Component {
             selected={gesture === g}
           />)}
       </div>
-      // </ReactCSSTransitionGroup>
     );
   }
 }

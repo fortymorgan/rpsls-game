@@ -6,6 +6,7 @@ export default class Rules extends Component {
     rules: false,
   }
 
+  // toggle show rules
   onRules = () => {
     const { rules } = this.state;
     this.setState({ rules: !rules });
@@ -13,6 +14,7 @@ export default class Rules extends Component {
 
   render() {
     const { rules } = this.state;
+    // generate position of rules window
     const rulesStyle = {
       top: rules ? '8%' : '-500px',
     };

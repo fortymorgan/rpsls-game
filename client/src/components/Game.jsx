@@ -33,6 +33,7 @@ class Game extends Component {
       online,
     } = this.props;
 
+    // generate class for the game field
     const className = cn({
       game: true,
       'game-started': !waiting,
@@ -41,6 +42,7 @@ class Game extends Component {
       draw: result === 'draw',
     });
 
+    // generate class for an opponents status label
     const infoClass = cn({
       info: true,
       online,

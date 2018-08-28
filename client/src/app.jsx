@@ -22,11 +22,13 @@ export default () => {
   // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+  // create Redux store with middlewares
   const store = createStore(
     reducers,
     composeEnhancers(applyMiddleware(thunk)),
   );
 
+  // add listeners for server websocket events
   actions.socket.on('message', ({ author, message }) => store.dispatch(actions.addMessage(author, message)));
   actions.socket.on('start', player => store.dispatch(actions.gameStart(player)));
   actions.socket.on('reset', () => store.dispatch(actions.gameReset()));
@@ -36,11 +38,14 @@ export default () => {
   actions.socket.on('turn', turn => store.dispatch(actions.makeChoose(turn)));
   actions.socket.on('left', () => store.dispatch(actions.setOpponentOffline()));
 
-  soundManager.setup({ debugMode: false });
-  soundManager.onready(addSounds);
 
+  soundManager.setup({ debugMode: false }); // initialize sound manager with debug mode off
+  soundManager.onready(addSounds); // add sounds to library when soundmanager becomes ready
+
+  // add gestures icons to fontawesome library
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 
+  // render the application
   ReactDOM.render(
     <Provider store={store}>
       <App />

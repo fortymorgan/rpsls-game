@@ -3,18 +3,21 @@ import { handleActions } from 'redux-actions';
 import { reducer as formReducer } from 'redux-form';
 import * as actions from '../actions';
 
+// chat messages
 const messages = handleActions({
   [actions.addMessage](state, { payload }) {
     return [...state, payload];
   },
 }, []);
 
+// players name
 const player = handleActions({
   [actions.startGame](state, { payload }) {
     return payload;
   },
 }, '');
 
+// game status
 const status = handleActions({
   [actions.startGame](state) {
     return { ...state, waiting: false, online: true };
@@ -38,6 +41,7 @@ const status = handleActions({
   finished: false,
 });
 
+// players gesture
 const gesture = handleActions({
   [actions.chooseGesture](state, { payload }) {
     return state === '' ? payload : state;
@@ -47,6 +51,7 @@ const gesture = handleActions({
   },
 }, '');
 
+// opponents gesture
 const opponent = handleActions({
   [actions.opponentsGesture](state, { payload }) {
     return state === '' ? payload : state;
@@ -56,6 +61,7 @@ const opponent = handleActions({
   },
 }, '');
 
+// game result
 const result = handleActions({
   [actions.getResult](state, { payload }) {
     return payload;
@@ -68,6 +74,7 @@ const result = handleActions({
   },
 }, 'none');
 
+// session id
 const session = handleActions({
   [actions.setSession](state, { payload }) {
     return payload;

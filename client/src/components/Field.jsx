@@ -9,6 +9,7 @@ const Gesture = (props) => {
   const { gesture } = props;
 
   return (
+    // add react transition animation on results render
     <ReactCSSTransitionGroup
       transitionName={'choose'}
       transitionAppear={true}
@@ -17,6 +18,7 @@ const Gesture = (props) => {
       transitionAppearTimeout={1000}
     >
       <div className="gesture">
+        {/* choose a gesture icon basing on prop */}
         <FontAwesomeIcon icon={gesture === '' ? 'question' : `hand-${gesture}`} size="5x" />
       </div>
     </ReactCSSTransitionGroup>
@@ -49,13 +51,15 @@ class Field extends Component {
       reset,
     } = this.props;
 
-    const disabled = !opponent || !gesture || reset;
+    const disabled = !opponent || !gesture || reset; // boolean for disabling reset button
 
+    // generate class for reset button
     const nextRClass = cn({
       reset: true,
       disabled,
     });
 
+    // headers map based on game result
     const headerMap = {
       none: 'Choose your weapon!',
       wait: 'Waiting for an opponent.',
