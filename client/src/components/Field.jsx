@@ -6,7 +6,15 @@ import cn from 'classnames';
 import * as actionCreators from '../actions';
 
 const Gesture = (props) => {
-  const { gesture } = props;
+  const { gesture, opponent } = props;
+
+  const chosen = gesture !== '';
+
+  const gestureClass = cn({
+    gesture: true,
+    chosen,
+    opponent,
+  });
 
   return (
     // add transition animation when rendered
@@ -17,9 +25,9 @@ const Gesture = (props) => {
       transitionLeave={false}
       transitionAppearTimeout={1500}
     >
-      <div className="gesture">
+      <div className={gestureClass}>
         {/* choose a gesture icon based on prop */}
-        <FontAwesomeIcon icon={gesture === '' ? 'question' : `hand-${gesture}`} size="5x" />
+        <FontAwesomeIcon icon={!chosen ? 'question' : `hand-${gesture}`} size="5x" />
       </div>
     </ReactCSSTransitionGroup>
   );
@@ -68,13 +76,20 @@ class Field extends Component {
       draw: 'Draw.',
     };
 
+    // generate a class for the VS sign
+    const finished = gesture !== '' && opponent !== '';
+    const versusClass = cn({
+      versus: true,
+      finished,
+    });
+
     return (
       <div className="field">
         <div className="field-header">{headerMap[result]}</div>
         <div className="field-body">
-          <Gesture gesture={gesture} />
-          <div className="versus">VS</div>
-          <Gesture gesture={opponent} />
+          <Gesture gesture={gesture} opponent={false} />
+          <div className={versusClass}>VS</div>
+          <Gesture gesture={opponent} opponent={true} />
         </div>
         <div className="field-footer">
           <button className={nextRClass} disabled={disabled} onClick={nextRound}>

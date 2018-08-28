@@ -138,6 +138,26 @@ body, form {
   transition: all .2s linear;
 }
 
+.gesture.chosen {
+  border-color: #4d7198;
+  transition: all .2s linear
+}
+
+.gesture.chosen path {
+  fill: #4d7198;
+  transition: all .2s linear
+}
+
+.opponent.chosen {
+  border-color: #B22222;
+  transition: all .2s linear
+}
+
+.opponent.chosen path {
+  fill: #B22222;
+  transition: all .2s linear
+}
+
 .versus {
   font-size: 32px;
 }
@@ -157,7 +177,7 @@ body, form {
   border: none;
   outline: none;
   width: 222px;
-  transition: all .2s linear;
+  transition: all .3s linear;
 }
 
 .reset.disabled {
@@ -273,4 +293,20 @@ body, form {
   opacity: 1;
   transform: rotateX(0deg);
   transition: all 1.5s linear;
+}
+
+.finished {
+  animation: vs-zoom 1s linear forwards;
+}
+
+@keyframes vs-zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
