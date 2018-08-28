@@ -1,4 +1,4 @@
-export default class Player {
+export default class MockPlayer {
   constructor() {
     this.state = {
       messages: [],

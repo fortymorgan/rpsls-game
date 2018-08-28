@@ -1,9 +1,9 @@
 import RpslsGame from '../server/rpslsGame';
-import Player from './__assets__/player';
+import MockPlayer from './__mocks__/player';
 
 describe('game instance test', () => {
-  const p1 = new Player();
-  const p2 = new Player();
+  const p1 = new MockPlayer();
+  const p2 = new MockPlayer();
 
   const game = new RpslsGame(p1, p2);
 

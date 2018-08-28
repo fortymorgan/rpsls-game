@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "jest": {
-    "testPathIgnorePatterns": ["__assets__"]
+    "testPathIgnorePatterns": ["__mocks__"]
   },
   "scripts": {
     "test": "jest",
