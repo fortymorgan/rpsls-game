@@ -105,15 +105,15 @@ body, form {
 }
 
 .win {
-  background: radial-gradient(ellipse at center,#90ed9099, white);
+  background: radial-gradient(ellipse at center,rgba(144, 237, 144, 0.6), white);
 }
 
 .lose {
-  background: radial-gradient(ellipse at center, #f0808099, white);
+  background: radial-gradient(ellipse at center, rgba(240, 128, 128, 0.6), white);
 }
 
 .draw {
-  background: radial-gradient(ellipse at center,#f3ff4f99, white);
+  background: radial-gradient(ellipse at center,rgba(243, 255, 79, 0.6), white);
 }
 
 .field-header {
