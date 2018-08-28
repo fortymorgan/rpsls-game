@@ -12,7 +12,7 @@ const RulesText = () => (
     <li>Paper disproves Spock</li>
     <li>Spock vaporizes rock</li>
     <li>And as it always has {'\u2013'} rock crushes scissors</li>
-    {/* Viva la The Big Bang Theory! */}
+    {/* Vive la The Big Bang Theory! */}
   </ul>
 );
 

@@ -30,6 +30,5 @@ export default () => {
     },
   ];
 
-  // add every sound in array to soundmanager library
   sounds.forEach(s => soundManager.createSound(s));
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Intro extends Component {
-  // select link on input focus for copy
+  // select the link to copy on the input focus
   onSelect = () => {
     this.input.select();
   }
@@ -9,7 +9,7 @@ export default class Intro extends Component {
   render() {
     const { session } = this.props;
 
-    const link = `${window.location.origin}#${session}`; // generate link basing on origin and session id
+    const link = `${window.location.origin}#${session}`; // generate a link based on the origin and session id
 
     return (
       <div className="lock">

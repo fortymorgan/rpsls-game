@@ -14,7 +14,7 @@ export default class Rules extends Component {
 
   render() {
     const { rules } = this.state;
-    // generate position of rules window
+
     const rulesStyle = {
       top: rules ? '8%' : '-500px',
     };

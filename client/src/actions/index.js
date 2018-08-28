@@ -3,10 +3,11 @@ import { reset } from 'redux-form';
 import io from 'socket.io-client';
 import { soundManager } from 'soundmanager2';
 
-// create client websocket
-export const socket = io(`${window.location.origin}?session=${window.location.hash.slice(1)}`);
+// create a websocket client with a session id
+const link = `${window.location.origin}?session=${window.location.hash.slice(1)}`;
+export const socket = io(link);
 
-// actions for local state changing
+// actions to change the local state
 export const addMessage = createAction('MESSAGE_ADD', (author, message) => ({ author, message }));
 export const startGame = createAction('GAME_START');
 export const chooseGesture = createAction('GESTURE_CHOOSE');
@@ -17,7 +18,7 @@ export const setSession = createAction('SESSION_SET');
 export const requestReset = createAction('RESET_REQUEST');
 export const setOpponentOffline = createAction('OPPONENT_OFLINE');
 
-// actions for client-side websocket messages
+// actions for the websocket client messages
 export const sendMessage = (message, author) => (dispatch) => {
   socket.emit('message', { author, message });
   dispatch(reset('newMessage'));

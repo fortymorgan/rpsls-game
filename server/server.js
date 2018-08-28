@@ -6,30 +6,31 @@ import Player from './player';
 import generateId from './idGenerator';
 
 export default () => {
-  const app = express(); // initialize express app
+  const app = express();
 
-  app.use(express.static('static')); // add serving static files
+  app.use(express.static('static'));
 
-  const server = http.createServer(app); // create server with express
+  const server = http.createServer(app);
 
-  const io = socketio(server); // create websocket on server side
+  const io = socketio(server);
 
-  const sessions = {}; // storage for game sessions
-  // on client websocket connection decide to generate session or to start the game
+  const sessions = {}; // storage of game sessions
+
   io.on('connection', (socket) => {
-    const { session } = socket.handshake.query; // reading session id from websocket client
-    // if the session id was sent by the client and this session exists start the game
+    const { session } = socket.handshake.query; // read the session id from the websocket client
+
+    // if the session id was sent by the client, and this session exists, start the game
     if (session && sessions[session]) {
-      const game = new RpslsGame(sessions[session], new Player(socket)); // create game instance
-      game.run(); // initialize the game
-      delete sessions[session]; // clear session from storage after game start
-    // else create new session with waiting player and send him session id for link generating
+      const game = new RpslsGame(sessions[session], new Player(socket));
+      game.run();
+      delete sessions[session]; // remove the session from the storage after the game starts
+    // else create a new session with the player and send him session id for the link generating
     } else {
-      const player = new Player(socket); // creaye player instance
-      const newSession = generateId(); // generating session id
-      player.sendSystemMessage('Waiting for an opponent'); // send system message to waiting player
-      player.sendSessionId(newSession); // send session id to waiting player
-      sessions[newSession] = player; // save waiting player to session storage
+      const player = new Player(socket);
+      const newSession = generateId();
+      player.sendSystemMessage('Waiting for an opponent');
+      player.sendSessionId(newSession);
+      sessions[newSession] = player; // keep the waiting player in the session storage
     }
   });
 

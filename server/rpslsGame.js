@@ -1,4 +1,4 @@
-// win conditions for every gesture
+// win conditions for each gesture
 const winMap = {
   rock: ['scissors', 'lizard'],
   paper: ['rock', 'spock'],
@@ -7,7 +7,7 @@ const winMap = {
   spock: ['rock', 'scissors'],
 };
 
-// messages map for winner and loser
+// messages map for the winner and the loser
 const finishMap = [
   {
     message: 'You won!',
@@ -21,10 +21,10 @@ const finishMap = [
 
 export default class RpslsGame {
   constructor(p1, p2) {
-    this.players = [p1, p2]; // array with the players instances
-    this.turns = [null, null]; // array with the players turns
+    this.players = [p1, p2];
+    this.turns = [null, null];
 
-    // map for checking game results
+    // map to check the results of the game
     this.gameOverMap = [
       {
         check: (player1, player2) => player1 === player2,
@@ -41,10 +41,10 @@ export default class RpslsGame {
     ];
   }
 
-  // initialize game
+  // initialize the game
   run() {
     this.players.forEach((p, idx) => {
-      // add listeners for clents websocket events
+      // add listeners to events on the websocket client
       p.subscribeTo('disconnect', () => this.players[idx ^ 1].onOpponentLeft());
       p.subscribeTo('turn', turn => this.onTurn(idx, turn));
       p.subscribeTo('message', msg => this.sendChatMessage(msg));
@@ -54,35 +54,35 @@ export default class RpslsGame {
           this.resetGame();
         }
       });
-      // emit start game event with players names
+      // emit the start event of the game with the players' names
       p.startGame(`p${idx + 1}`);
     });
 
     this.sendToPlayers('Choose your weapon!');
   }
 
-  // send sytem message for current player in array
+  // send a system message to the current player in the array
   sendToPlayer(pIdx, msg) {
     this.players[pIdx].sendSystemMessage(msg);
   }
 
-  // send sytem message for both players
+  // send a system message to both players
   sendToPlayers(msg) {
     this.players.forEach(p => p.sendSystemMessage(msg));
   }
 
-  // send players messages to both players
+  // send player's message to both players
   sendChatMessage(msg) {
     this.players.forEach(p => p.sendMessage(msg));
   }
 
-  // reset game results for next round
+  // reset game results for the next round
   resetGame() {
     this.players.forEach(p => p.resetGame());
     this.sendToPlayers('Next Round!');
   }
 
-  // write players turns to an array and checking for game over
+  // write the turn of the player in the array and check the end of the game
   onTurn(pIdx, turn) {
     if (!this.turns[pIdx]) {
       this.turns[pIdx] = turn;
@@ -91,18 +91,18 @@ export default class RpslsGame {
     }
   }
 
-  // send system message with players turn
+  // send a system message with a player's turn
   sendTurn(pIdx, turn) {
     this.sendToPlayer(pIdx, `You selected ${turn}`);
     this.players[pIdx].sendTurn(turn);
   }
 
-  // send system message with opponents turn on game over
+  // send a system message with an opponents's turn at the end of the game
   sendOpponentsTurns() {
     this.players.forEach((p, idx) => p.sendOpponentsTurn(this.turns[idx ^ 1]));
   }
 
-  // check if both players made turns
+  // check if both players made a turn
   checkGameOver() {
     if (this.turns[0] && this.turns[1]) {
       this.getGameResult();
@@ -110,7 +110,7 @@ export default class RpslsGame {
     }
   }
 
-  // check game results on game over
+  // check the game results at the end of the game
   getGameResult() {
     const p1 = this.turns[0];
     const p2 = this.turns[1];
@@ -118,13 +118,13 @@ export default class RpslsGame {
     this.gameOverMap.find(c => c.check(p1, p2)).result();
   }
 
-  // send system message and result on draw
+  // send a system message and a result in a draw
   sendDrawMessage() {
     this.sendToPlayers('Draw.');
     this.players.forEach(p => p.finishGame('draw'));
   }
 
-  // send system message and result to winner and loser
+  // send a system message and a result to the winner and the loser
   sendWinMessage(...players) {
     players.forEach((p, idx) => {
       this.players[p].sendSystemMessage(finishMap[idx].message);

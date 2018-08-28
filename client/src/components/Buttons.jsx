@@ -8,7 +8,7 @@ import * as actionCreators from '../actions';
 const Button = (props) => {
   const { gesture, onTurn, selected } = props;
 
-  // generate class for gestures buttons
+  // generate a class for the gestures buttons
   const className = cn({
     button: true,
     gesture: true,
@@ -16,16 +16,16 @@ const Button = (props) => {
   });
 
   return (
-    // add react transition animation on buttons render
+    // add transition animation when rendered
     <ReactCSSTransitionGroup
       transitionName={`gesture-${gesture}`}
       transitionAppear={true}
       transitionEnter={false}
       transitionLeave={false}
-      transitionAppearTimeout={1000}
+      transitionAppearTimeout={1500}
     >
       <div className={className} id={gesture} onClick={onTurn}>
-        {/* choose a gesture icon basing on prop */}
+        {/* choose a gesture icon based on prop */}
         <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
       </div>
     </ReactCSSTransitionGroup>
@@ -35,7 +35,7 @@ const Button = (props) => {
 const mapStateToProps = ({ gesture, status: { finished } }) => ({ gesture, finished });
 
 class Buttons extends Component {
-  // handler for button on players turn
+  // handler for a button on the player's turn
   onTurn = gesture => () => {
     const { makeTurn, finished } = this.props;
     if (!finished) {

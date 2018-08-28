@@ -3,7 +3,7 @@ import React from 'react';
 const Message = (props) => {
   const { message: { author, message }, player } = props;
 
-  // choose message author basing on author's signature
+  // choose the message author based on the author's signature
   let realAuthor;
   if (author === 's') {
     realAuthor = 'System';

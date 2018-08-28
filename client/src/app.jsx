@@ -22,7 +22,6 @@ export default () => {
   // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  // create Redux store with middlewares
   const store = createStore(
     reducers,
     composeEnhancers(applyMiddleware(thunk)),
@@ -40,12 +39,11 @@ export default () => {
 
 
   soundManager.setup({ debugMode: false }); // initialize sound manager with debug mode off
-  soundManager.onready(addSounds); // add sounds to library when soundmanager becomes ready
+  soundManager.onready(addSounds);
 
   // add gestures icons to fontawesome library
   library.add(faHandLizard, faHandPaper, faHandRock, faHandScissors, faHandSpock, faQuestion);
 
-  // render the application
   ReactDOM.render(
     <Provider store={store}>
       <App />
