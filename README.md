@@ -4,7 +4,7 @@
 ## Description
 "Rock-Paper-Scissors-Lizard-Spock" online multiplayer game. This is a session-based game for two players.
 
-[Link to the app](https://rpsls-mygame.herokuapp.com)
+Link to the app: [https://rpsls-mygame.herokuapp.com](https://rpsls-mygame.herokuapp.com)
 
 
 ### Rules
@@ -57,9 +57,9 @@ The game equipped with the chat where you can talk with your opponent. System me
 ### Screenshots
 
 #### Desktop
-<img src="screenshots/game.png" alt="Desktop" title="Desktop version" />
+![Desktop version](screenshots/game.png)
 
-## Features to add
+## Possible feature improvements
 
 ### Resposive design
 
@@ -67,11 +67,11 @@ Add a flexible design to play the game on mobile devices.
 
 ### Sound on messages
 
-Need to add sound on incoming messages.
+Add a sound on incoming messages.
 
 ### Mute sounds
 
-Need to add an ability to mute all game sounds.
+Add an ability to mute all game sounds.
 
 ## How to develop
 To run the project locally first you need to install the dependencies:
@@ -130,7 +130,7 @@ git push heroku master
 Your app will be deployed to `https://*your_project_name*.herokuapp.com`
 
 ## Built with
-- [React](https://github.com/facebook/react) - web framework
+- [React](https://github.com/facebook/react)
 - [Redux](https://github.com/reduxjs/redux) - app state container
-- [Express](https://github.com/expressjs/express) - for serving static files
+- [Express](https://github.com/expressjs/express) - web framework for node.js
 - [Socket.IO](https://github.com/socketio/socket.io) - websocket framework
