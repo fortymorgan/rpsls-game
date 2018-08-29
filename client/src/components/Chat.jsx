@@ -12,12 +12,19 @@ class Chat extends Component {
 
     return (
       <div className="chat">
-        <div className="messages">
+        <div className="messages" ref={(div) => { this.chat = div; }}>
           {messages.map((m, idx) => <Message key={idx} message={m} player={player} />)}
         </div>
         <NewMessageForm />
       </div>
     );
+  }
+
+  componentDidUpdate() {
+    const scrollTop = this.chat.scrollHeight - this.chat.offsetHeight;
+    if (scrollTop > 0) {
+      this.chat.scrollTop = scrollTop;
+    }
   }
 }
 
