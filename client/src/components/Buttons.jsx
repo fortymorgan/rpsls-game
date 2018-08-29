@@ -15,6 +15,8 @@ const Button = (props) => {
     selected,
   });
 
+  const screenWidth = window.innerWidth;
+
   return (
     // add transition animation when rendered
     <ReactCSSTransitionGroup
@@ -26,7 +28,7 @@ const Button = (props) => {
     >
       <div className={className} id={gesture} onClick={onTurn} data-tooltip={gesture}>
         {/* choose a gesture icon based on prop */}
-        <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
+        <FontAwesomeIcon icon={`hand-${gesture}`} size={screenWidth <= 768 ? '4x' : '5x'} />
       </div>
     </ReactCSSTransitionGroup>
   );
