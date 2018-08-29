@@ -14,7 +14,8 @@
     "server": "node dist/index.js",
     "build-server": "babel server --out-dir dist --source-maps inline",
     "build-app": "npm run webpack -- -p --env production",
-    "build": "npm run build-app && npm run build-server"
+    "build": "npm run build-app && npm run build-server",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
