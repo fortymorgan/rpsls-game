@@ -18,6 +18,7 @@ class NewMessage extends Component {
           component="input"
           className="new-message"
           placeholder="New message"
+          autoComplete="off"
         />
       </form>
     );
