@@ -216,6 +216,26 @@ body, form {
   cursor: pointer;
 }
 
+.button::after {
+	background: rgba(77, 113, 152, 0.8);
+	border-radius: 8px;
+	box-shadow: 1px 1px 10px rgba(77, 113, 152, 0.5);
+	color: #FFF;
+	content: attr(data-tooltip);
+	top: -35px;
+	opacity: 0;
+	padding: 3px 7px;
+	position: absolute;
+	visibility: hidden;
+			
+	transition: all 0.4s ease-in-out;
+}
+
+.button:hover::after {
+	opacity: 1;
+	visibility: visible;
+}
+
 .button:hover,
 .button.selected {
   border-color: #4d7198;

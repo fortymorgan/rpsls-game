@@ -24,7 +24,7 @@ const Button = (props) => {
       transitionLeave={false}
       transitionAppearTimeout={500}
     >
-      <div className={className} id={gesture} onClick={onTurn}>
+      <div className={className} id={gesture} onClick={onTurn} data-tooltip={gesture}>
         {/* choose a gesture icon based on prop */}
         <FontAwesomeIcon icon={`hand-${gesture}`} size="5x" />
       </div>
