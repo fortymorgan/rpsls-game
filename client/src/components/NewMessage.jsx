@@ -6,8 +6,10 @@ import * as actionCreators from '../actions';
 class NewMessage extends Component {
   // send chat message to server
   onSend = (values) => {
-    const { sendMessage, player } = this.props;
-    sendMessage(values.newMessage, player);
+    const { sendMessage, player, dirty } = this.props;
+    if (dirty) {
+      sendMessage(values.newMessage, player);
+    }
   }
 
   render() {
