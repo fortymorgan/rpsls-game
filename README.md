@@ -1,5 +1,4 @@
 # Rock-Paper-Scissors-Lizard-Spock
-[![Build Status](https://img.shields.io/bitbucket/pipelines/fortymorgan/rpsls-game.svg)](https://bitbucket.org/fortymorgan/rpsls-game/)
 
 ## Description
 "Rock-Paper-Scissors-Lizard-Spock" online multiplayer game. This is a session-based game for two players.
